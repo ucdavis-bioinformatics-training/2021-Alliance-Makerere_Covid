@@ -27,12 +27,14 @@ navigation:
     url: software_scripts/scripts_links
 
   - heading: Prerequisites
-  - title: CLI
-    url: base/cli_prerequisites
-  - title: Introduction to R
-    url: base/Intro2R/Intro2R_main
-  - title: High Performance Computing
-    url: base/cluster
+  - title: Introduction to Command Line Part 1
+    url: cli/command-line-intro1
+  - title: Introduction to Command Line Part 2
+    url: cli/command-line-intro2
+  - title: Introduction to Command Line Part 3
+    url: cli/command-line-intro3
+#  - title: Day 3 Homework Solution
+#    url: cli/day3_homework_solution
 
 #  - heading: Data Reduction
 
