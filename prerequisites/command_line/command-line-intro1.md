@@ -3,6 +3,8 @@
 
 # Introduction to Command Line Interface
 
+{:toc}
+
 ## Outline:
 1. What is the command line?
 2. Directory Structure
