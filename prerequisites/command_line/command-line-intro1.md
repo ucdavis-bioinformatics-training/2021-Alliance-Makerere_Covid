@@ -2,8 +2,11 @@
 {% include_relative ../../assets/scripts/quiz.md %}
 
 # Introduction to Command Line Interface
+# Part 1
 
+* TOC
 {:toc}
+
 
 ## Outline:
 1. What is the command line?
@@ -28,16 +31,6 @@
 20. Paste Command (paste, for loops)
 21. Shell Scripts and File Permissions (chmod, nano, ./)
 
-### A CLI cheat sheet
-
-<object data="https://files.fosswire.com/2007/08/fwunixref.pdf" type="application/pdf" width="700px" height="700px">
-    <embed src="https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="http://yoursite.com/the.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
-
-
-# Session 1
 
 ## What is the Command-Line Interface
 
@@ -51,6 +44,12 @@ After opening or logging into a terminal, system messages are often displayed, f
 A prompt is a short text message at the start of the command line and ends with '$' in bash shell, commands are typed after the prompt. The prompt typically follows the form **username@server:current_directory$**. If your screen looks like the one below, i.e. your see your a bunch of messages and then your username followed by "@tadpole:~$" at the beginning of the line, then you are successfully logged in.
 
 <img src="figures/cli_figure4.png" alt="cli_figure4" width="800px"/>
+
+### A CLI cheat sheet
+
+<object data="https://files.fosswire.com/2007/08/fwunixref.pdf" type="application/pdf" width="700px" height="700px">
+</object>
+
 
 
 ## Command Line Basics
