@@ -71,7 +71,19 @@ function showResults(myq, qc, rc){
 }
 </script>
 
-# Session 2
+# Introduction to Command Line Interface
+# Part 2
+
+9. History Repeats Itself (history, head, tail, <up arrow>)
+10. Editing Yourself (Ctrl-A, Ctrl-E, Ctrl-K, Ctrl-W)
+11. Create and Destroy (echo, cat, rm, rmdir)
+15. Forced Removal (rm -r)
+13. Piping and Redirection (\|, >, >>, cut, sort, grep)
+14. Compressions and Archives (tar, gzip, gunzip)
+16. BASH Wildcard Characters (?, *, find, environment variables($), quotes/ticks)
+18. Symbolic Links (ln -s)
+19. STDOUT and STDERR (>1, >2)
+
 
 ## History Repeats Itself
 
@@ -214,11 +226,11 @@ The '>' character redirects output of a command that would normally go to the sc
 
 The 'cut' command pieces of lines from a file line by line. This command cuts characters 1 to 3, from every line, from file 'test.txt'
 
-    cut -c 1-3 test.txt  
+    cut -c 1-3 test.txt
 
 same thing, piping output of one command into input of another
 
-    cat test.txt | cut -c 1-3  
+    cat test.txt | cut -c 1-3
 
 This pipes (i.e., sends the output of) cat to cut to sort (-r means reverse order sort), and then grep searches for pattern ('s') matches (i.e. for any line where an 's' appears anywhere on the line.)
 
@@ -230,7 +242,7 @@ This is a great way to build up a set of operations while inspecting the output 
 
 ## Compression and Archives
 
-As file sizes get large, you'll often see compressed files, or whole compressed folders. Note that **any good bioinformatics software** should be able to work with compressed file formats. 
+As file sizes get large, you'll often see compressed files, or whole compressed folders. Note that **any good bioinformatics software** should be able to work with compressed file formats.
 
     gzip test.txt
     cat test.txt.gz
@@ -253,7 +265,7 @@ The .tar.gz and .tgz are *commonly used* extensions for compressed tar files, wh
 
 Here -x = extract, -z = use gzip/gunzip, -v = verbose (show each file in archive), -f filename
 
-Note that, unlike Windows, linux does not depend on file extensions to determine file behavior. So you could name a tarball 'fish.puppy' and the extract command above should work just fine. The only thing that should be different is that tab-completion doesn't work within the 'tar' command if it doesn't see the 'correct' file extension.    
+Note that, unlike Windows, linux does not depend on file extensions to determine file behavior. So you could name a tarball 'fish.puppy' and the extract command above should work just fine. The only thing that should be different is that tab-completion doesn't work within the 'tar' command if it doesn't see the 'correct' file extension.
 
 
 ## BASH Wildcard Characters
@@ -284,7 +296,7 @@ The quote characters " and ' are different. In general, single quotes preserve t
 However, some commands try to be 'smarter' about this behavior, so it's a little hard to predict what will happen in all cases. It's safest to experiment first when planning a command that depends on quoting ... list filenames first, instead of changing them, etc. Finally, the 'backtick' characters \` (same key - unSHIFTED - as the tilde ~) causes the shell to interpret what's between them as a command, and return the result.
 
      # counts the number of lines in file and stores result in the LINES variable
-    LINES=`cat PhiX/Illumina/RTA/Sequence/Bowtie2Index/genome.1.bt2 | wc -l` 
+    LINES=`cat PhiX/Illumina/RTA/Sequence/Bowtie2Index/genome.1.bt2 | wc -l`
     echo $LINES
 
 
@@ -304,8 +316,8 @@ Programs can write to two separate output streams, 'standard out' (STDOUT), and 
 
     wc -c genome.fa 1> chars.txt 2> any.err
 
-the 1st output, STDOUT, goes to 'chars.txt'  
-the 2nd output, STDERR, goes to 'any.err'  
+the 1st output, STDOUT, goes to 'chars.txt'
+the 2nd output, STDERR, goes to 'any.err'
 
     cat chars.txt
 

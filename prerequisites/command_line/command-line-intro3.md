@@ -71,10 +71,18 @@ function showResults(myq, qc, rc){
 }
 </script>
 
-# Session 3
+# Introduction to Command Line Interface
+# Part 3
 
-The sed command
-----------------
+11. The sed command
+12. More on Pipes
+13. Bash Loops
+14. Manipulation of a FASTA File
+14. Shell Scripts, File Permissions
+15. Command Line Arguments for Shell Scripts
+16. Pipes and Loops inside scripts
+
+## The sed command
 
 Let's take a look at the 'sed' command. **NOTE: On Macs use 'gsed'**. sed (short for stream editor) is a command that allows you to manipulate character data in various ways. One useful thing it can do is substitution. Let's download a simple file to work on:
 
@@ -122,8 +130,7 @@ This gets the 10th through 20th lines from the file.
 **CHALLENGE:**
 See if you can find a way to use sed to remove all the "CHR"s from the file.
 
-More pipes
------------
+## More on pipes
 
 Now, let's delve into pipes a little more. Pipes are a very powerful way to look at and manipulate complex data using a series of simple programs. Let's look at some fastq files. Get a few small fastq files:
 
@@ -157,8 +164,7 @@ Now you have a list of how many reads were categorized into each barcode. Here i
 Find the distribution of the first 5 bases of all the reads in C61_S67_L006_R1_001.fq.gz. I.e., count the number of times the first 5 bases of every read occurs across all reads.
 
 
-Loops
-------
+## Bash Loops
 
 Loops are useful for quickly telling the shell to perform one operation after another, in series. For example:
 
