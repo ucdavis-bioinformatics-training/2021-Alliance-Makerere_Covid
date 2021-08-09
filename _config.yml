@@ -39,7 +39,7 @@ navigation:
   - title: The cluster and modules
     url: prerequisites/command_line/cluster
   - title: Challenge Solution
-    url: prerequisites/command_line/command-line-challenge-solutions
+    url: prerequisites/command_line/command-line-intro-challenge-solutions
   - title: Homework Solution
     url: prerequisites/command_line/part3_homework_solution
 
