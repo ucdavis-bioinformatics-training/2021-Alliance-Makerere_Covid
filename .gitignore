@@ -1,4 +1,7 @@
 .DS_Store
+Gemfile.lock
+
+_site
 
 # History files
 .Rhistory

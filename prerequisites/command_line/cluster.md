@@ -1,11 +1,11 @@
-## Logging In
+## Using the computing cluster
 
 In order to log in, you should have already created an account on our systems.
 
 ### For Macs/Linux/Windows 10 - Logging In
 
 1. For Macs, open a Terminal (usually under Applications/Utilities on a Mac), or install [iterm2](https://www.iterm2.com/). For Linux, just open a regular terminal. For Windows 10, open a command prompt by searching for and running "cmd".
- 
+
 2. Copy and paste this into the terminal:
 
     ssh username@tadpole.genomecenter.ucdavis.edu
@@ -31,13 +31,13 @@ For this workshop we will be using a cluster reservation, meaning we've set asid
 
 |:---|:---|:---|:---|:---|
 |RESV_NAME              |  STATE  |         START_TIME  |           END_TIME     | DURATION
-|epigenetics-workshop   | ACTIVE  |2020-11-29T00:00:00  |2020-12-11T00:00:00  | 12-00:00:00  
+|epigenetics-workshop   | ACTIVE  |2020-11-29T00:00:00  |2020-12-11T00:00:00  | 12-00:00:00
 
 You'll notice the reservation extends to Dec-11-2020, you will have an extra week to work on the cluster and workshop material.
 
 ## First, what is a cluster?
 
-<img src="figures/cluster_diagram.png" alt="figures/cluster_diagram" width="800px"/>
+<img src="cluster_diagram.png" alt="schematic depicting relationship between local computer, head node, and compute nodes" width="800px"/>
 
 The basic architecture of a compute cluster consists of a "head node", which is the computer from which a user submits jobs to run, and "compute nodes", which are a large number of computers on which the jobs can be run. It is also possible to log into a compute node and run jobs directly from there. **In general you should never run a job directly on the head node!**
 
@@ -45,15 +45,12 @@ The basic architecture of a compute cluster consists of a "head node", which is 
 
     ssh [username]@tadpole.genomecenter.ucdavis.edu
 
-where 'username' is replaced with your username. Press Enter.
+where 'username' is replaced with your username. Be sure to remove the square brackets. Press Enter.
 
 ---
 **2\.** Now, let's look at a few slurm commands.
 
-The main commands we will be using are srun, sbatch, squeue, scancel, and sacct. First, log into the head node (tadpole.genomecenter.ucdavis.edu) and make a directory for yourself where you will be doing all your work.
-
-    mkdir /share/workshop/epigenetics_workshop/$USER
-    cd /share/workshop/epigenetics_workshop/$USER
+The main commands we will be using are srun, sbatch, squeue, scancel, and sacct. First, log into the head node (tadpole.genomecenter.ucdavis.edu).
 
 **2a\.** ['srun'](https://slurm.schedmd.com/srun.html) is used to run a job interactively. We most often use it to start an interactive session on a compute node. Take a look at the options to srun:
 
@@ -61,7 +58,7 @@ The main commands we will be using are srun, sbatch, squeue, scancel, and sacct.
 
 Our cluster requires that you specify a time limit for your job. If your job exceeds these limits, then it will be killed. So try running the following to create an interactive session on a node:
 
-    srun -t 00:30:00 -c 1 -n 1 --mem 500 --partition production --account epigenetics --reservation epigenetics-workshop --pty /bin/bash
+    srun -t 00:30:00 -c 1 -n 1 --mem 500 --partition production --account workshop --reservation workshop --pty /bin/bash
 
 This command is requesting a compute node with a time limit of 30 minutes (-t), one processor (-c), a max memory of 0.5Gb [500] (--mem), and then finally, specifying a shell to run in a terminal ("--pty" option). Run this command to get to a compute node when you want to run jobs on the command-line directly.
 
@@ -85,16 +82,15 @@ use Exit on the command line to exit the session
 
 Generally, we do not use any options for sbatch ... we typically give it a script (i.e. a text file with commands inside) to run. Let's take a look at a template script [template.slurm](../../software_scripts/scripts/template.slurm):
 
-<pre class="prettyprint"><code class="language-sh" style="background-color:333333">#!/bin/bash
-# options for sbatch
+<pre class="prettyprint"><code class="language-sh" style="background-color:333333"># options for sbatch
 #SBATCH --job-name=name # Job name
 #SBATCH --nodes=1 # should never be anything other than 1
 #SBATCH --ntasks=1 # number of cpus to use
-#SBATCH --time=30 # Acceptable time formats include "minutes", "minutes:seconds", "hours:minutes:seconds", "days-hours", "days-hours:minutes" and "days-hours:minutes:seconds".
-#SBATCH --mem=500 # Memory pool for all cores (see also --mem-per-cpu)
+#SBATCH --time=60 # Acceptable time formats include "minutes", "minutes:seconds", "hours:minutes:seconds", "days-hours", "days-hours:minutes" and "days-hours:minutes:seconds".
+#SBATCH --mem=2000 # Memory pool for all cores (see also --mem-per-cpu)
 #SBATCH --partition=production # cluster partition
-#SBATCH --account=epigenetics # cluster account to use for the job
-#SBATCH --reservation=epigenetics-workshop # cluster account reservation
+#SBATCH --account=workshop # cluster account to use for the job
+#SBATCH --reservation=workshop # cluster account reservation
 ##SBATCH --array=1-16 # Task array indexing, see https://slurm.schedmd.com/job_array.html, the double # means this line is commented out
 #SBATCH --output=stdout.out # File to which STDOUT will be written
 #SBATCH --error=stderr.err # File to which STDERR will be written
@@ -118,8 +114,8 @@ echo Time taken: $elapsed
 The first line tells sbatch what scripting language (bash here) the rest of the file is in. Any line that begins with a "#" symbol is ignored by the bash interpreter, those lines that begin with "#SBATCH" are used by the slurm controller. Those lines are for specifying sbatch options without having to type them on the command-line every time. In this script, on the next set of lines, we've put some code for calculating the time elapsed for the job and then we simply wait for 5 minutes (300 seconds) and exit. Lets try running it
 
 
-    cd /share/workshop/epigenetics_workshop/$USER
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2020-Epigenetics_Workshop/master/software_scripts/scripts/template.slurm template.slurm
+    cd /share/workshop/mrnaseq_workshop/$USER
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2021-Alliance-Makerere_Covid/master/software_scripts/scripts/template.slurm template.slurm
     cat template.slurm
     sbatch template.slurm
 
@@ -171,7 +167,7 @@ To view the same information for all jobs of a user (replace username with your 
 
     module avail
 
-<img src="figures/modules_figure1.png" alt="modules_figure1" width="800px"/>
+<img src="modules_figure1.png" alt="results of running module avail" width="800px"/>
 
 This is a list of all the software (with different versions) that you can access. The format of 'modules' is software/version here you can see htstream has 3 different versions installed with the latest being 1.0.0. When you load a module without specifying a version, it will load the default (generally the latest) version. If you need an older version, you need to use the cooresponding version number:
 

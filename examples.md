@@ -1,3 +1,10 @@
+To run locally
+
+bundle install
+bundle exec jekyll serve
+
+
+
 # HEADER 1
 ## HEADER 2
 ### HEADER 3

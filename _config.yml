@@ -34,8 +34,14 @@ navigation:
     url: prerequisites/command_line/command-line-intro2
   - title: Introduction to Command Line Part 3
     url: prerequisites/command_line/command-line-intro3
-#  - title: Day 3 Homework Solution
-#    url: cli/day3_homework_solution
+  - title: Logging in
+    url: prerequisites/command_line/logging-in
+  - title: The cluster and modules
+    url: prerequisites/command_line/cluster
+#  - title: Challenge Solution
+#    url: prerequisites/command_line/command-line-challenge-solutions
+#  - title: Homework Solution
+#    url: prerequisites/command_line/part3_homework_solution
 
 #  - heading: Data Reduction
 
