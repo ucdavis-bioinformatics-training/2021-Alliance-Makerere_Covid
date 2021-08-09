@@ -38,16 +38,16 @@ navigation:
     url: prerequisites/command_line/logging-in
   - title: The cluster and modules
     url: prerequisites/command_line/cluster
-  - title: Challenge Solution
-    url: prerequisites/command_line/command-line-intro-challenge-solutions
-  - title: Homework Solution
-    url: prerequisites/command_line/part3_homework_solution
+  # - title: Challenge Solution
+  #   url: prerequisites/command_line/command-line-intro-challenge-solutions
+  # - title: Homework Solution
+  #   url: prerequisites/command_line/part3_homework_solution
 
   - heading: Data Reduction
   - title: Filetypes
     url: data_reduction/filetypes
   - title: Project setup
-    url: data_reduction/project_setup 
+    url: data_reduction/project_setup
 
 
 #  - heading: Data Analysis
