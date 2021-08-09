@@ -27,11 +27,11 @@ where 'username' is replaced with your username. Press Enter. You will probably 
 
 **1\.** In the UC Davis Bioinformatics Core we have a large computational cluster (named lssc0) that we use for our analyses. The job scheduling system we use on this cluster is called [Slurm](https://slurm.schedmd.com/). In this section, we will go through examples of the commands we will be using to interact with the cluster.
 
-For this workshop we will be using a cluster reservation, meaning we've set aside resources (5 nodes) for exclusive use by the workshop, so any wait times will be minimal. The reservation is:
+For this workshop we will be using a cluster reservation, meaning we've set aside resources (4 nodes) for exclusive use by the workshop, so any wait times will be minimal. The reservation is:
 
 |:---|:---|:---|:---|:---|
 |RESV_NAME              |  STATE  |         START_TIME  |           END_TIME     | DURATION
-|epigenetics-workshop   | ACTIVE  |2020-11-29T00:00:00  |2020-12-11T00:00:00  | 12-00:00:00
+|workshop               | ACTIVE  |2021-08-07T10:39:28  |2021-08-22T00:00:00  | 14-13:20:32 |
 
 You'll notice the reservation extends to Dec-11-2020, you will have an extra week to work on the cluster and workshop material.
 

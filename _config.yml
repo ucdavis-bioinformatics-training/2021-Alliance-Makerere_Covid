@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
-title: 'Microbial Community Analysis (amplicons)'
+title: 'Covid Variant Analysis (amplicons)'
 show_downloads: True
 markdown: kramdown
 google_analytics: True
