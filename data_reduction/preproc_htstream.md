@@ -65,17 +65,17 @@ HTStream achieves these benefits by using a tab delimited intermediate format th
 
 HTStream includes the following applications:
 
-hts_AdapterTrimmer: Identify and remove adapter sequences.
-hts_CutTrim: Discreet 5' and/or 3' basepair trimming.
-hts_LengthFilter: Remove reads outside of min and/or max length.
-hts_NTrimmer: Extract the longest subsequence with no Ns.
-hts_Overlapper: Overlap paired end reads, removing adapters when present.
-hts_PolyATTrim: Identify and remove polyA/T sequence.
-hts_Primers: Identify and optionally remove 5' and/or 3' primer sequence.
-hts_QWindowTrim: 5' and/or 3' quality score base trimming using windows.
-hts_SeqScreener: Identify and remove/keep/count contaminants (default phiX).
-hts_Stats: Compute read stats.
-hts_SuperDeduper: Identify and remove PCR duplicates.  
+  * hts_AdapterTrimmer: Identify and remove adapter sequences.
+  * hts_CutTrim: Discreet 5' and/or 3' basepair trimming.
+  * hts_LengthFilter: Remove reads outside of min and/or max length.
+  * hts_NTrimmer: Extract the longest subsequence with no Ns.
+  * hts_Overlapper: Overlap paired end reads, removing adapters when present.
+  * hts_PolyATTrim: Identify and remove polyA/T sequence.
+  * hts_Primers: Identify and optionally remove 5' and/or 3' primer sequence.
+  * hts_QWindowTrim: 5' and/or 3' quality score base trimming using windows.
+  * hts_SeqScreener: Identify and remove/keep/count contaminants (default phiX).
+  * hts_Stats: Compute read stats.
+  * hts_SuperDeduper: Identify and remove PCR duplicates.
 
 The source code and pre-compiled binaries for Linux can be downloaded and installed [from the GitHub repository](https://github.com/s4hts/HTStream).
 
