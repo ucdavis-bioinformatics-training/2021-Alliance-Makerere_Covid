@@ -93,7 +93,7 @@ mkdir -p /share/workshop/alliance_covid/$USER/covid_swift
 cd /share/workshop/alliance_covid/$USER/covid_swift
 mkdir 00-RawData
 cd 00-RawData/
-ln -s /share/workshop/alliance_covid/rawdata/* .
+ln -s /share/workshop/alliance_covid/rawdata/00-RawData/* .
 ```
 
 This directory now contains two folders from 2 sequencing runs, the fastq file pairs each represent 1 "sample".

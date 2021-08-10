@@ -27,8 +27,8 @@ where 'username' is replaced with your username. Press Enter.
 
 The main commands we will be using are srun, sbatch, squeue, scancel, and sacct. First, log into the head node (tadpole.genomecenter.ucdavis.edu) and make a directory for yourself where you will be doing all your work.
 
-    mkdir /share/workshop/mca_workshop/$USER
-    cd /share/workshop/mca_workshop/$USER
+    mkdir /share/workshop/alliance_covid//$USER
+    cd /share/workshop/alliance_covid//$USER
 
 **2a\.** ['srun'](https://slurm.schedmd.com/srun.html) is used to run a job interactively. We most often use it to start an interactive session on a compute node. Take a look at the options to srun:
 
@@ -93,7 +93,7 @@ echo Time taken: $elapsed
 The first line tells sbatch what scripting language (bash here) the rest of the file is in. Any line that begins with a "#" symbol is ignored by the bash interpreter, those lines that begin with "#SBATCH" are used by the slurm controller. Those lines are for specifying sbatch options without having to type them on the command-line every time. In this script, on the next set of lines, we've put some code for calculating the time elapsed for the job and then we simply wait for 5 minutes (300 seconds) and exit. Lets try running it
 
 
-    cd /share/workshop/mca_workshop/$USER
+    cd /share/workshop/alliance_covid//$USER
     wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2021-Alliance-Makerere_Covid/master/software_scripts/scripts/template.slurm template.slurm
     cat template.slurm
     sbatch template.slurm
@@ -111,7 +111,7 @@ Looking at the help documentation, we see that we can filter the results based o
 
     squeue -u $USER
 
-<div class="output">msettles@tadpole:/share/workshop/mca_workshop/msettles$ squeue -u $USER
+<div class="output">msettles@tadpole:/share/workshop/alliance_covid//msettles$ squeue -u $USER
              JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
           29390121 productio     name msettles  R       0:06      1 drove-13
 </div>
@@ -154,7 +154,7 @@ Now try running the 'hts_Stats' app from htstream:
 
     hts_Stats
 
-<div class="output">msettles@tadpole:/share/workshop/mca_workshop/msettles$hts_Stats
+<div class="output">msettles@tadpole:/share/workshop/alliance_covid//msettles$hts_Stats
 -bash: hts_Stats: command not found
 </div>
 
@@ -162,7 +162,7 @@ You should get an error saying that the command was not found. Take a look at yo
 
     echo $PATH
 
-<div class="output">msettles@tadpole:/share/workshop/mca_workshop/msettles$ echo $PATH
+<div class="output">msettles@tadpole:/share/workshop/alliance_covid//msettles$ echo $PATH
 /software/slurm/17.11.2/lssc0-linux/sbin:/software/slurm/17.11.2/lssc0-linux/bin:/software/modules/1.923/lssc0-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/puppetlabs/bin
 </div>
 
@@ -188,7 +188,7 @@ You'll see that the directory for htstream has been added to PATH.
 
     module list
 
-<div class="output">msettles@tadpole:/share/workshop/mca_workshop/msettles$ module list
+<div class="output">msettles@tadpole:/share/workshop/alliance_covid//msettles$ module list
 Currently Loaded Modulefiles:
  1) slurm/latest   2) htstream/1.0.0
 </div>
@@ -201,15 +201,15 @@ _'module unload'_ will unload the module(s) you specify.
     module unload star
     module list
 
-<div class="output">msettles@tadpole:/share/workshop/mca_workshop/msettles$ module load star
+<div class="output">msettles@tadpole:/share/workshop/alliance_covid//msettles$ module load star
 Module star-2.7.0e-lssc0-linux loaded. STAR (Spliced Transcripts Alignment to a Reference) is an RNA-seq data aligner. NOTE: Indices must be indexed using this version or newer, they cannot be from a previous version.
-msettles@tadpole:/share/workshop/mca_workshop/msettles$ module load samtools
+msettles@tadpole:/share/workshop/alliance_covid//msettles$ module load samtools
 Module samtools-1.9-lssc0-linux loaded. Samtools is a suite of programs for interacting with high-throughput sequencing data.
-msettles@tadpole:/share/workshop/mca_workshop/msettles$ module list
+msettles@tadpole:/share/workshop/alliance_covid//msettles$ module list
 Currently Loaded Modulefiles:
  1) slurm/latest   2) htstream/1.0.0   3) star/2.7.0e   4) samtools/1.9
-msettles@tadpole:/share/workshop/mca_workshop/msettles$ module unload star
-msettles@tadpole:/share/workshop/mca_workshop/msettles$ module list
+msettles@tadpole:/share/workshop/alliance_covid//msettles$ module unload star
+msettles@tadpole:/share/workshop/alliance_covid//msettles$ module list
 Currently Loaded Modulefiles:
  1) slurm/latest   2) htstream/1.0.0   3) samtools/1.9
 </div>
@@ -221,11 +221,11 @@ Currently Loaded Modulefiles:
     module list
     echo $PATH
 
-<div class="output">msettles@tadpole:/share/workshop/mca_workshop/msettles$     echo $PATH
+<div class="output">msettles@tadpole:/share/workshop/alliance_covid//msettles$     echo $PATH
 /software/samtools/1.9/lssc0-linux/bin:/software/htstream/1.0.0/lssc0-linux/bin:/share/biocore/software/bin:/software/modules/1.923/lssc0-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/puppetlabs/bin
-msettles@tadpole:/share/workshop/mca_workshop/msettles$     module purge
-msettles@tadpole:/share/workshop/mca_workshop/msettles$     module list
+msettles@tadpole:/share/workshop/alliance_covid//msettles$     module purge
+msettles@tadpole:/share/workshop/alliance_covid//msettles$     module list
 No Modulefiles Currently Loaded.
-msettles@tadpole:/share/workshop/mca_workshop/msettles$     echo $PATH
+msettles@tadpole:/share/workshop/alliance_covid//msettles$     echo $PATH
 /share/biocore/software/bin:/software/modules/1.923/lssc0-linux/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/opt/puppetlabs/bin
 </div>
