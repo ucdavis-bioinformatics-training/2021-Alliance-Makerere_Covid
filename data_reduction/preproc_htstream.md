@@ -75,7 +75,7 @@ hts_Primers: Identify and optionally remove 5' and/or 3' primer sequence.
 hts_QWindowTrim: 5' and/or 3' quality score base trimming using windows.
 hts_SeqScreener: Identify and remove/keep/count contaminants (default phiX).
 hts_Stats: Compute read stats.
-hts_SuperDeduper: Identify and remove PCR duplicates.
+hts_SuperDeduper: Identify and remove PCR duplicates.  
 
 The source code and pre-compiled binaries for Linux can be downloaded and installed [from the GitHub repository](https://github.com/s4hts/HTStream).
 
@@ -583,12 +583,12 @@ For now lets just do the smaller test dataset.
 ## Run multiqc to collect statistics and create a report:
 cd /share/workshop/alliance_covid/$USER/covid_swift/
 module load multiqc/htstream.dev0
-multiqc -i mca-cleaning -o mca-htstream-report ./HTS_testing
+multiqc -i covid-cleaning -o covid-htstream-report ./HTS_testing/GSR-SWIFT-2021-04-08-FS25275372.preprocessed.json
 ```
 
-Transfer mca-cleaning_multiqc_report.html to your computer and open it in a web browser.
+Transfer covid-cleaning_multiqc_report.html to your computer and open it in a web browser.
 
-Or in case of emergency, download this copy: [mca-cleaning_multiqc_report.html](mca-cleaning_multiqc_report.html)
+Or in case of emergency, download this copy: [covid-cleaning_multiqc_report.html](covid-cleaning_multiqc_report.html)
 
 
 ### Another dataset
