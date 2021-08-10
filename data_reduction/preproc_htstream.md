@@ -38,7 +38,6 @@ Visualizing the preprocessing summary are a great way to look for technical bias
 ### Covid Amplicon Preprocessing Workflow
 
 1. Raw data stats.
-1. Screen read as Covid vs contaminant (human).
 1. Overlapping paired end reads and remove any adapters (overhangs).
 1. Identify and remove primer sequences.
 1. Remove reads containing 'N' bases.
@@ -266,7 +265,6 @@ Paired end reads are 6 columns:
 ## A Covid Amplicon preprocessing pipeline
 
 1. hts_Stats: get stats on *input* raw reads
-1. hts_SeqScreener: Inverse identify Covid sequences, screen out non-covid (human) sequences
 1. hts_Overlapper: overlap, identify and remove adapter sequence
 1. hts_Primers: Identify and remove primer sequences
 1. hts_NTrimmer: trim to remove any remaining N characters
@@ -354,12 +352,6 @@ hts_Stats \
 hts_Overlapper \
   --notes 'overlap and trim adapters' \
   --append-stats-file GSR-SWIFT-2021-04-08-FS25275372.preprocessed.json | \
-hts_SeqScreener \
-  --notes 'kmer match to Covid genome' \
-  --append-stats-file GSR-SWIFT-2021-04-08-FS25275372.preprocessed.json \
-  --inverse \
-  --kmer 21 \
-  --seq ../resources/NC_045512.2.fasta | \
 hts_Primers \
   --notes 'identify and trip adapters' \
   --append-stats-file GSR-SWIFT-2021-04-08-FS25275372.preprocessed.json \
@@ -393,8 +385,6 @@ Note the patterns:
 * *Review the final json output, how many reads do we have left?*
 
 * *Confirm that number by counting the number of reads in the final output files.*
-
-* *How many reads were screened out?*
 
 * *How many adapters did we detect, cut off?*
 
@@ -459,12 +449,6 @@ call="hts_Stats \
       hts_Overlapper \
       	--notes 'overlap and trim adapters' \
       	--append-stats-file ${outpath}/${sample}.json | \
-      hts_SeqScreener \
-        --notes 'kmer match to Covid genome' \
-        --append-stats-file ${outpath}/${sample}.json \
-        --inverse \
-      	--kmer 21 \
-      	--seq resources/NC_045512.2.fasta | \
       hts_Primers \
       	--notes 'identify and trip adapters' \
       	--append-stats-file ${outpath}/${sample}.json \

@@ -36,12 +36,6 @@ call="hts_Stats \
       hts_Overlapper \
       	--notes 'overlap and trim adapters' \
       	--append-stats-file ${outpath}/${sample}.json | \
-      hts_SeqScreener \
-        --notes 'kmer match to Covid genome' \
-        --append-stats-file ${outpath}/${sample}.json \
-        --inverse \
-      	--kmer 21 \
-      	--seq resources/NC_045512.2.fasta | \
       hts_Primers \
       	--notes 'identify and trip adapters' \
       	--append-stats-file ${outpath}/${sample}.json \
