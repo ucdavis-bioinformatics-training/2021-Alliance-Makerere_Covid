@@ -49,9 +49,11 @@
 
 <img style="padding-left:100px" src="alignment_figures/alignment_figure3.png" alt="alignment_figure3" width="60%"/>
 
-* Inner length, insert size, fragment length  
+* Inner length, insert size, fragment length
 
 <img src="alignment_figures/alignment_figure4.jpg" alt="alignment_figure4" width="60%"/>
+
+
 *From [This Biostars answer](https://www.biostars.org/p/106291/)*
 
 
@@ -196,11 +198,11 @@ Now do the same thing for the pairs, and load that as a second track in IGV.
 - work through QA/QC of the experiment
 - complete the questions at the end
 
-1. We can now run Bowtie2 across all samples on the real data using a SLURM script, [star.slurm](../scripts/map_bowtie2.slurm), that we should take a look at now.
+1. We can now run Bowtie2 across all samples on the real data using a SLURM script, [map_bowtier2.slurm](../software_scripts/scripts/map_bowtie2.slurm), that we should take a look at now.
 
     ```bash
     cd /share/workshop/alliance_covid/msettles/covid_swift  # We'll run this from the main directory
-    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2021-June-RNA-Seq-Analysis/master/software_scripts/scripts/map_bowtie2.slurm
+    wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2021-Alliance-Makerere_Covid/master/software_scripts/scripts/map_bowtie2.slurm
     less map_bowtie2.slurm
     ```
 
@@ -218,7 +220,7 @@ Now do the same thing for the pairs, and load that as a second track in IGV.
     #SBATCH --output=slurmout/map_bowtie-%A_%a.out # File to which STDOUT will be written
     #SBATCH --error=slurmout/map_bowtie-%A_%a.err # File to which STDERR will be written
     #SBATCH --mail-type=ALL # Type of email notification- BEGIN,END,FAIL,ALL
-    #SBATCH --mail-user=settles@ucdavis.edu # Email to which notifications will be sent
+    #SBATCH --mail-user=youremail@whatever.com # Email to which notifications will be sent
 
     start=`date +%s`
     echo $HOSTNAME
@@ -310,3 +312,5 @@ When you are done, type "q" to exit.
     ```sbatch
     squeue -u msettles  # use your username
     ```
+
+3. If you want to be challenged run multiqc on the results for both htstream and bowtie2.
