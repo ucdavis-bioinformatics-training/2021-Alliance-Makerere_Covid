@@ -103,7 +103,7 @@ Genome sequence fasta files and annotation (gff, gtf) files go together! These s
 1. We are now ready to try an alignment:
 
     ```bash
-    cd /share/workshop/alliance_covid/msettles/covid_swift/HTS_testing
+    cd /share/workshop/alliance_covid/$USER/covid_swift/HTS_testing
     ```
 
     and let's run Bowtie2 on the pair of streamed test files we created earlier:
@@ -135,7 +135,7 @@ Genome sequence fasta files and annotation (gff, gtf) files go together! These s
     We need to index the BAM file:
 
     ```bash
-    cd /share/workshop/alliance_covid/msettles/covid_swift/HTS_testing
+    cd /share/workshop/alliance_covid/$USER/covid_swift/HTS_testing
 
     samtools index -@ 4 GSR-SWIFT-2021-04-08-FS25275372-se.bam
     ```
@@ -201,7 +201,7 @@ Now do the same thing for the pairs, and load that as a second track in IGV.
 1. We can now run Bowtie2 across all samples on the real data using a SLURM script, [map_bowtier2.slurm](../software_scripts/scripts/map_bowtie2.slurm), that we should take a look at now.
 
     ```bash
-    cd /share/workshop/alliance_covid/msettles/covid_swift  # We'll run this from the main directory
+    cd /share/workshop/alliance_covid/$USER/covid_swift  # We'll run this from the main directory
     wget https://raw.githubusercontent.com/ucdavis-bioinformatics-training/2021-Alliance-Makerere_Covid/master/software_scripts/scripts/map_bowtie2.slurm
     less map_bowtie2.slurm
     ```
@@ -310,7 +310,7 @@ When you are done, type "q" to exit.
     We can watch the progress of our task array using the 'squeue' command. Takes about 2 minutes to process each sample.
 
     ```sbatch
-    squeue -u msettles  # use your username
+    squeue -u $USER  # use your username
     ```
 
 3. If you want to be challenged run multiqc on the results for both htstream and bowtie2.
