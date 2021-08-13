@@ -8,7 +8,7 @@
 ---
 ## Building consensus sequences in R
 
-1. First lets setup our environment.
+### First lets setup our environment.
 
 ```bash
 cd /share/workshop/alliance_covid/$USER/covid_swift
@@ -16,7 +16,8 @@ module load R
 R
 ```
 
-2. In R Install needed packages
+### In R Install needed packages
+
 ```r
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -37,13 +38,15 @@ if (!requireNamespace("phangorn", quietly = TRUE))
   BiocManager::install("phangorn")
 ```
 
-3. Lets download the IUPAC Code map
+### Lets download the IUPAC Code map
+
 ```r
 download.file("https://github.com/ucdavis-bioinformatics-training/2021-Alliance-Makerere_Covid/raw/main/data/IUPAC_CODE_MAP_extended.rds", "IUPAC_CODE_MAP_extended.rds")
 IUPAC_CODE_MAP_extended <- readRDS("IUPAC_CODE_MAP_extended.rds")
 ```
 
-4. Build our consensus sequences from the aligned bam files
+### Build our consensus sequences from the aligned bam files
+
 ```r
 #load the libraries
 library("Biostrings")
@@ -105,6 +108,7 @@ dir.create("03-ConsensusSeqs", showWarnings = FALSE)
 writeXStringSet(sample_af, file.path("03-ConsensusSeqs", "swift_samples.B5.fasta"))
 q()
 ```
+
 **quit R**
 
 ## Variant classification with Pangolin
