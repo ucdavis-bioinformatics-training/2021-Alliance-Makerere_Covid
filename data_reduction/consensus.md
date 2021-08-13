@@ -3,7 +3,7 @@
 ---
 ## Initial Setup
 
-*This document assumes [preproc htstream](./alignment) has been completed.*
+*This document assumes [Alignment](./alignment) has been completed.*
 
 ---
 ## Building consensus sequences in R
@@ -39,7 +39,7 @@ if (!requireNamespace("phangorn", quietly = TRUE))
 ```
 
 ### Lets download the IUPAC Code map
-
+This is an object from the R package txtools
 ```r
 download.file("https://github.com/ucdavis-bioinformatics-training/2021-Alliance-Makerere_Covid/raw/main/data/IUPAC_CODE_MAP_extended.rds", "IUPAC_CODE_MAP_extended.rds")
 IUPAC_CODE_MAP_extended <- readRDS("IUPAC_CODE_MAP_extended.rds")
@@ -87,7 +87,11 @@ for(s in basename(samples)){
   qseq_on_ref <- sequenceLayer(mcols(gaa)$seq, cigar(gaa))
   pos_by_ref <- start(gaa)
   cm <- consensusMatrix(qseq_on_ref, shift=pos_by_ref)
-  cm <- cbind(cm,matrix(0,nrow=dim(cm)[1], ncol=width(sarscov2_seq)-dim(cm)[2]))
+  if (width(sarscov2_seq)-dim(cm)[2] < 1){
+    cm <- cm[,1:width(sarscov2_seq)]
+  } else {
+    cm <- cbind(cm,matrix(0,nrow=dim(cm)[1], ncol=width(sarscov2_seq)-dim(cm)[2]))
+  }
 
   col_sums <- colSums(cm)
   col_sums[col_sums == 0] <- 1  # to avoid division by 0
@@ -141,14 +145,14 @@ to your computer and view the result on your computer. What variants do we have?
 
 Now do the same for the other dataset. What do you see about the Variants??  B5 was back in April and B19 is recent.
 
-<!--
 ## Phylogenetics
 ```r
 library(DECIPHER)
 library(phangorn)
 
 consensus_seqs <- readDNAStringSet(file.path("03-ConsensusSeqs", "swift_samples.B5.fasta"))
-alignment = AlignSeqs(consensus_seqs, anchor=NA, processors=16)
+## We also need to remove the Gaps before we can align.
+alignment = AlignSeqs(RemoveGaps(consensus_seqs), anchor=NA, processors=16)
 
 phang.align <- phyDat(as(alignment, "matrix"), type="DNA")
 dm <- dist.ml(phang.align)
@@ -158,4 +162,25 @@ fit = pml(treeNJ, data=phang.align)
 fitGTR <- update(fit, k=4, inv=0.2)
 fitGTR <- optim.pml(fitGTR, model="GTR", optInv=TRUE, optGamma=TRUE, rearrangement = "stochastic", control = pml.control(trace = 0))
 
-``` -->
+png("swift_samples.B5.NJtree.png")
+plot(treeNJ, "unrooted", main="NJ")
+dev.off()
+```
+
+<img src="figures/swift_samples.B5.NJtree.png" alt="NJTree" width="80%"/>
+
+Now try instead of a NJ tree you can try UPGMA
+
+replace
+
+  treeNJ <- NJ(dm)
+  fit = pml(treeNJ, data=phang.align)
+
+with
+
+  treeUPGMA  <- upgma(dm))
+  fit = pml(treeUPGMA, data=phang.align)
+
+Explore the [phangorn](https://cran.r-project.org/web/packages/phangorn/vignettes/Trees.html) for more ways to manipulate the tree.
+
+Once done do the same processes on the Batch19A dataset.
