@@ -54,6 +54,8 @@ navigation:
     url: data_reduction/alignment-indexref
   - title: Aligning reads
     url: data_reduction/alignment
+  - title: Consensus and Variant Calling
+    url: data_reduction/consensus
 
 
 #  - heading: Data Analysis
