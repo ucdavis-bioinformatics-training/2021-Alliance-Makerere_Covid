@@ -92,6 +92,8 @@ for(s in basename(samples)){
 
   idx <- colSums(cm_prop) == 0
   cm_prop["N", idx] <- 1
+
+  # How does changing the threshold change the results? here because their are 5 single character bases (A,C,G,T,N) in IUPAC_CODE_MAP_extneded, the threshold has to be in the range [0-0.2]
   dss <- DNAStringSet(consensusString(cm_prop, threshold=0.15,  ambiguityMap=IUPAC_CODE_MAP_extended) )
   names(dss) <- s
   sample_af <- c(sample_af,dss)
@@ -131,6 +133,9 @@ Transfer the file
 04-Pangolin/swift_samples.B5.pangolin
 
 to your computer and view the result on your computer. What variants do we have????
+
+
+Now do the same for the other dataset. What do you see about the Variants??  B5 was back in April and B19 is recent.
 
 <!--
 ## Phylogenetics
